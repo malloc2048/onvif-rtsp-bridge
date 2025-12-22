@@ -1,0 +1,9 @@
+# ONVIF-RTSP Bridge Configuration
+# This file can be used for additional configuration options
+# Currently all configuration is done via environment variables
+
+# Example advanced settings (not yet implemented):
+# advanced:
+#   rtsp_transport: tcp
+#   reconnect_delay: 5
+#   max_reconnect_attempts: 10

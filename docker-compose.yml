@@ -1,0 +1,58 @@
+services:
+  onvif-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: onvif-rtsp-bridge
+    restart: unless-stopped
+    # On Linux: use network_mode: host for WS-Discovery multicast
+    # On macOS: host networking doesn't work, use ports instead (no auto-discovery)
+    ports:
+      - "${ONVIF_PORT:-8080}:${ONVIF_PORT:-8080}"
+      - "${RTSP_PROXY_PORT:-8554}:${RTSP_PROXY_PORT:-8554}"
+    environment:
+      # Camera Configuration
+      - CAMERA_NAME=${CAMERA_NAME:-HikVision Camera}
+      - CAMERA_MANUFACTURER=${CAMERA_MANUFACTURER:-HikVision}
+      - CAMERA_MODEL=${CAMERA_MODEL:-DS-2CD2xxx}
+      - CAMERA_SERIAL=${CAMERA_SERIAL:-HV001}
+      
+      # RTSP Source (HikVision substream)
+      - RTSP_URL=${RTSP_URL:-rtsp://admin:password@192.168.1.100:554/Streaming/Channels/102}
+      - RTSP_USERNAME=${RTSP_USERNAME:-admin}
+      - RTSP_PASSWORD=${RTSP_PASSWORD:-password}
+      
+      # ONVIF Server Configuration
+      - ONVIF_PORT=${ONVIF_PORT:-8080}
+      - ONVIF_USERNAME=${ONVIF_USERNAME:-admin}
+      - ONVIF_PASSWORD=${ONVIF_PASSWORD:-admin123}
+      
+      # Network Configuration
+      - SERVER_IP=${SERVER_IP:-}  # Leave empty for auto-detect
+      - RTSP_PROXY_PORT=${RTSP_PROXY_PORT:-8554}
+      
+      # Stream Configuration
+      - STREAM_WIDTH=${STREAM_WIDTH:-1280}
+      - STREAM_HEIGHT=${STREAM_HEIGHT:-720}
+      - STREAM_FPS=${STREAM_FPS:-15}
+      - STREAM_BITRATE=${STREAM_BITRATE:-2048}
+      
+      # Discovery
+      - ENABLE_DISCOVERY=${ENABLE_DISCOVERY:-true}
+      
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${ONVIF_PORT:-8080}/onvif/device_service"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

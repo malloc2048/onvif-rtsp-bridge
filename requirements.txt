@@ -1,0 +1,32 @@
+# Web Framework
+aiohttp>=3.9.0
+aiohttp-cors>=0.7.0
+
+# SOAP/XML handling
+lxml>=5.1.0
+zeep>=4.2.1
+
+# RTSP Proxy
+aiortsp>=1.3.0
+
+# Configuration
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# UUID
+uuid>=1.30
+
+# WS-Discovery
+WSDiscovery>=2.0.0
+
+# Security/Auth
+passlib>=1.7.4
+
+# Async utilities
+asyncio-throttle>=1.0.2
+
+# Logging
+colorlog>=6.8.0
+
+# Date/Time handling
+python-dateutil>=2.8.2
