@@ -5,11 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: onvif-rtsp-bridge
     restart: unless-stopped
-    # On Linux: use network_mode: host for WS-Discovery multicast
-    # On macOS: host networking doesn't work, use ports instead (no auto-discovery)
-    ports:
-      - "${ONVIF_PORT:-8080}:${ONVIF_PORT:-8080}"
-      - "${RTSP_PROXY_PORT:-8554}:${RTSP_PROXY_PORT:-8554}"
+    # Linux/Synology: use network_mode: host for WS-Discovery multicast
+    network_mode: host
+    # macOS: comment out network_mode above and uncomment ports below (no auto-discovery)
+    # ports:
+    #   - "${ONVIF_PORT:-8080}:${ONVIF_PORT:-8080}"
+    #   - "${RTSP_PROXY_PORT:-8554}:${RTSP_PROXY_PORT:-8554}"
     environment:
       # Camera Configuration
       - CAMERA_NAME=${CAMERA_NAME:-HikVision Camera}
