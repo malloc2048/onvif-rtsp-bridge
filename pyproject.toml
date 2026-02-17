@@ -1,0 +1,18 @@
+[project]
+name = "onvif-rtsp-bridge"
+version = "0.1.0"
+dependencies = [
+    "aiohttp>=3.13.3",
+    "aiohttp-cors>=0.8.1",
+    "aiortsp>=1.4.0",
+    "asyncio-throttle>=1.0.2",
+    "colorlog>=6.10.1",
+    "lxml>=6.0.2",
+    "passlib>=1.7.4",
+    "python-dateutil>=2.9.0.post0",
+    "python-dotenv>=1.2.1",
+    "pyyaml>=6.0.3",
+    "uuid>=1.30",
+    "wsdiscovery>=2.1.2",
+    "zeep>=4.3.2",
+]
