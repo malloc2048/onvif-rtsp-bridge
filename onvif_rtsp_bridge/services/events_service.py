@@ -4,8 +4,8 @@ import logging
 from datetime import datetime, timezone, timedelta
 from lxml import etree
 
-from src.config import Config
-from src.utils.soap_utils import SoapHandler
+from onvif_rtsp_bridge.config import Config
+from onvif_rtsp_bridge.utils.soap_utils import SoapHandler
 
 logger = logging.getLogger(__name__)
 

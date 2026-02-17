@@ -6,7 +6,7 @@ import subprocess
 import os
 from typing import Optional
 
-from src.config import Config
+from onvif_rtsp_bridge.config import Config
 
 logger = logging.getLogger(__name__)
 

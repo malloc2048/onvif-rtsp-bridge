@@ -10,11 +10,11 @@ import sys
 import logging
 from datetime import datetime
 
-from src.config import Config
-from src.onvif_server import OnvifServer
-from src.discovery import WsDiscoveryService
-from src.rtsp_proxy import RtspProxy
-from src.utils.logging_config import setup_logging
+from onvif_rtsp_bridge.config import Config
+from onvif_rtsp_bridge.onvif_server import OnvifServer
+from onvif_rtsp_bridge.discovery import WsDiscoveryService
+from onvif_rtsp_bridge.rtsp_proxy import RtspProxy
+from onvif_rtsp_bridge.utils.logging_config import setup_logging
 
 
 logger = logging.getLogger(__name__)

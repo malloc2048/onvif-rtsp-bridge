@@ -5,11 +5,11 @@ from datetime import datetime, timezone
 from aiohttp import web
 from lxml import etree
 
-from src.config import Config
-from src.services.device_service import DeviceService
-from src.services.media_service import MediaService
-from src.services.events_service import EventsService
-from src.utils.soap_utils import SoapHandler
+from onvif_rtsp_bridge.config import Config
+from onvif_rtsp_bridge.services.device_service import DeviceService
+from onvif_rtsp_bridge.services.media_service import MediaService
+from onvif_rtsp_bridge.services.events_service import EventsService
+from onvif_rtsp_bridge.utils.soap_utils import SoapHandler
 
 logger = logging.getLogger(__name__)
 

@@ -7,7 +7,7 @@ import struct
 import uuid
 from datetime import datetime, timezone
 
-from src.config import Config
+from onvif_rtsp_bridge.config import Config
 
 logger = logging.getLogger(__name__)
 
